@@ -1,5 +1,5 @@
 local Library = {}
-CORE_VERSION = 4
+CORE_VERSION = 5
 z = 1000000
 
 -- vars
@@ -71,7 +71,7 @@ function Library:CreateGUI(WL,NAME,VERSION)
 	end
 	ui.Name, ui.Enabled, ui.IgnoreGuiInset, ui.ResetOnSpawn = NAME, false, true, false
 	local function as(b,a)if string.find(b,a)then return true else return false end end if not game:GetService("RunService"):IsStudio()then local b=game:HttpGet(WL)if as(b,plr.UserId)then game.StarterGui:SetCore("SendNotification",{Title="By Xorice",Text="Welcome to use Project X"})ui.Enabled=true game.StarterGui:SetCore("SendNotification",{Title="Project X",Text="Best worked on Synapse X"})else game.StarterGui:SetCore("SendNotification",{Title="Whitelist",Text="Please buy the Gui to use this"})ui:Destroy()script:Destroy()end else ui.Enabled=true end
-	
+
 	do
 		local projectXTITLE = Instance.new("TextLabel")
 		local PJXT_X = Instance.new("TextLabel")
@@ -135,13 +135,13 @@ function Library:CreateGUI(WL,NAME,VERSION)
 		PJXT_DOWN.TextSize = 14.000
 		PJXT_DOWN.TextWrapped = true
 		PJXT_DOWN.ZIndex = z
-		
+
 		PJXT_X.TextTransparency = 1
 		PJXT_UP.TextTransparency = 1
 		PJXT_DOWN.TextTransparency = 1
 		projectXTITLE.TextTransparency = 1
 		projectXTITLE.BorderSizePixel = 5
-		
+
 		PJXT_UP.Position = UDim2.new(0,0,-1,0)
 		Library:tween(PJXT_UP,TweenInfo.new(2,Enum.EasingStyle.Quint,Enum.EasingDirection.Out,0,false,0),{Position=UDim2.new(0,0,1,0),TextTransparency=0})
 		Library:tween(PJXT_DOWN,TweenInfo.new(2,Enum.EasingStyle.Quint,Enum.EasingDirection.Out,0,false,0),{Position=UDim2.new(1,0,0,0),TextTransparency=0})
@@ -155,27 +155,29 @@ function Library:CreateGUI(WL,NAME,VERSION)
 		Library:tween(projectXTITLE,TweenInfo.new(0.5,Enum.EasingStyle.Sine,Enum.EasingDirection.Out,0,false,0),{Position=UDim2.new(0.45,0,0.5,0)})
 		Library:tween(PJXT_X,TweenInfo.new(0.5,Enum.EasingStyle.Sine,Enum.EasingDirection.Out,0,false,0),{TextTransparency=0})
 		wait(0.5)
-		projectXTITLE.TextStrokeTransparency = 0
-		projectXTITLE.TextColor3 = Color3.new(0,0,0)
+		--projectXTITLE.TextStrokeTransparency = 0
+		--projectXTITLE.TextColor3 = Color3.new(0,0,0)
 		PJXT_X.TextColor3 = Color3.new(0,0,1)
-		for n=1,10 do
-			for n=1,5 do
+		for n=1,12 do
+			for n=1,10 do
 				local eff = Instance.new("Frame",projectXTITLE)
 				eff.AnchorPoint = Vector2.new(rand(-10,10)/10,(rand(-10,10)/10))
 				eff.BorderSizePixel = 0
 				eff.BackgroundColor3 = Color3.new(rand(0,1),rand(0,1),rand(0,1))
 				eff.Position = UDim2.new(rand(0,10)/10,0,rand(0,10)/10,0)
-				eff.Size = UDim2.new(0,75,0,30)
+				eff.Size = UDim2.new(0,100,0,20)
 				eff.Name = "DELETE"
 				eff.ZIndex = z+rand(-1,0)
 			end
-			wait(0.05)
+			projectXTITLE.Position = UDim2.new(0.45,math.random(-10,10),0.5,math.random(-10,10))
+			wait(1/30)
 			for n,v in pairs(projectXTITLE:GetChildren()) do
 				if v.Name == "DELETE" then
 					v:Destroy()
 				end
 			end
 		end
+		projectXTITLE.Position = UDim2.new(0.45, 0, 0.5, 0)
 		projectXTITLE.TextStrokeTransparency = 1
 		projectXTITLE.TextColor3 = Color3.new(1,1,1)
 		PJXT_X.TextColor3 = Color3.new(1,0,0)
@@ -281,7 +283,7 @@ function Library:CreateGUI(WL,NAME,VERSION)
 			end
 		end)
 	end
-	
+
 	return ui
 end
 
@@ -437,7 +439,7 @@ function Library:new_BoolFunc(ui,p,title)
 end
 
 function Library:new_TextBoxButton(ui,p,title)
-	
+
 end
 
 return Library
